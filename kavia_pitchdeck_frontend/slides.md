@@ -1,636 +1,619 @@
 ---
-# You can also start simply with 'default'
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# apply unocss classes to the current slide
-class: text-center
-# https://sli.dev/features/drawing
-drawings:
-  persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
-# enable MDC Syntax: https://sli.dev/features/mdc
-mdc: true
----
-
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-transition: fade-out
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
-
-## Keyboard Shortcuts
-
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
+# Global deck settings
 theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
+title: Kavia – Code Generation Platform for Teams
+info: |
+  Kavia Investor Deck — 20 slides
+  Dark theme aligned to new Kavia ember/orange palette with elevated panels.
+class: text-left
+mdc: true
+transition: slide-left
+fonts:
+  sans: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial
+  mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+css: |
+  @import "./theme/kavia.css";
 
 ---
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+# KAVIA AI 
+<div class="kavia-title-slide with-hero-glow">
+  <div class="hero-copy">
+    <img class="logo" src="./assets/kavia_logo.svg" alt="Kavia logo" />
+    <h2 class="text-hero">Transforming Enterprise Software Development to AI-Native</h2>
+    <p class="subtitle text-md">An agentic workflow platform and knowledge graph that modernizes and accelerates the entire SDLC</p>
+    <div class="subtitle text-xs">Founders: Labeeb Ismail, Anita Ganti, Rich Saffir • Date: 2025-08-31 • Contact: labeeb@kavia.ai</div>
+    <div class="hero-ctas">
+      <button class="btn-primary">Explore Deck</button>
+      <button class="btn-secondary">Contact</button>
+    </div>
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
+---
 
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+# The Problem
 
-[Learn more](https://sli.dev/guide/animations.html#motion)
+<div class="problem-grid">
+  <div class="problem-card">
+    <div class="problem-eyebrow">Bottlenecks</div>
+    <h3 class="problem-title">Enterprise SDLC is slow and costly</h3>
+    <ul class="problem-points">
+      <li>Large codebases and complex dependencies</li>
+      <li>Tribal knowledge and undocumented processes</li>
+      <li>Slow iteration cycles and high engineering costs</li>
+    </ul>
+  </div>
 
+  <div class="problem-card">
+    <div class="problem-eyebrow">Urgency</div>
+    <h3 class="problem-title">Pressure to modernize keeps rising</h3>
+    <ul class="problem-points">
+      <li>Constant upgrades and refactoring in a fast-moving stack</li>
+      <li>Low barriers enable disruptors to ramp quickly</li>
+    </ul>
+  </div>
+
+  <div class="problem-card">
+    <div class="problem-eyebrow">AI Gap</div>
+    <h3 class="problem-title">Generative AI adoption stalls in practice</h3>
+    <ul class="problem-points">
+      <li>Single-step tools lack complete view of context</li>
+      <li>Hard to integrate with real-world repos and CI/CD</li>
+      <li>Enterprise assets not AI-native; context is fragmented</li>
+      <li>Limited collaboration and governance</li>
+    </ul>
+  </div>
+</div>
+
+
+---
+
+# Our Solution
+
+Kavia: a multi-agent orchestration platform for E2E Software Development with a Custom Knowledge Graph.
+
+<div class="stats-band mt-1">
+  <div class="stat-card">
+    <div class="stat-number">3-5x</div>
+    <div class="stat-label">Faster Delivery</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">1/3</div>
+    <div class="stat-label">Resources</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">100s</div>
+    <div class="stat-label">Engineers Supported</div>
+  </div>
+</div>
+
+<div class="card-grid three mt-1">
+  <div class="feature-card vbar">
+    <div class="eyebrow">Agents</div>
+    <h3 class="feature-title">Specialized micro-agents</h3>
+    <p class="muted">Planning, coding, testing, docs, bug fixing, code-scanning, deployment, etc.</p>
+  </div>
+
+  <div class="feature-card vbar">
+    <div class="eyebrow">Workflow</div>
+    <h3 class="feature-title">Enterprise-integrated</h3>
+    <p class="muted">CI-aware, repository-native, aligned to enterprise processes/tools</p>
+  </div>
+
+  <div class="feature-card vbar">
+    <div class="eyebrow">Knowledge Graph</div>
+    <h3 class="feature-title">Unified enterprise context</h3>
+    <p class="muted">Custom Knowledge Graph powering all agents for deep understanding</p>
+  </div>
+
+</div>
+
+
+---
+
+# Product Overview
+
+<div class="split-cols mt-2">
+  <div class="left">
+    <div class="feature-card vbar">
+      <h3 class="feature-title">Inspect</h3>
+      <p class="muted">Analyze codebase, requirements, and enterprise assets</p>
+    </div>
+    <div class="feature-card vbar">
+      <h3 class="feature-title">Plan</h3>
+      <p class="muted">Create Requirements, Design, Architecture, and Test Plans</p>
+    </div>
+    <div class="feature-card vbar">
+      <h3 class="feature-title">Build</h3>
+      <p class="muted">Write, refactor, migrate, test, and integrate based on the plan</p>
+    </div>
+  </div>
+  <div class="right">
+    <div class="glass-frame">
+      <div class="glow-badge pill">Product</div>
+      <div class="frame-placeholder">Product screenshot / UI mock placeholder</div>
+    </div>
+  </div>
 </div>
 
 ---
 
-# LaTeX
+# KAVIA Differentiators
 
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
+<div class="mt-1">
+  <div class="feature-card vbar">
+    <h3 class="feature-title">Kavia Knowledge Graph</h3>
+    <p class="muted">LLM-friendly, unified enterprise context</p>
+  </div>
+  <div class="feature-card vbar">
+    <h3 class="feature-title">Lifecycle Orchestration</h3>
+    <p class="muted">End-to-end workflows across the SDLC</p>
+  </div>
+  <div class="feature-card vbar">
+    <h3 class="feature-title">Customizable</h3>
+    <p class="muted">Adaptable workflows for team-specific needs</p>
+  </div>
+  <div class="feature-card vbar">
+    <h3 class="feature-title">Enterprise Integrations</h3>
+    <p class="muted">Connectors for tools and platforms used at scale</p>
+  </div>
+</div>
 
 ---
 
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+# How It Works (Architecture)
 
 ```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
+%% Dark-mode styling for presentations
+%% (You can tweak colors below to match brand palette)
+%% Suggested: view on a dark slide background
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "primaryTextColor": "#E6EDF3",
+    "secondaryTextColor": "#C9D1D9",
+    "tertiaryColor": "#0B1220",
+    "primaryColor": "#0B1220",
+    "lineColor": "#6E7681",
+    "fontFamily": "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial"
+  }
+}}%%
+
+flowchart TD
+
+%% ====== Dark palette classes (high-contrast on dark bg)
+classDef portal fill:#0B1220,stroke:#7AA2FF,stroke-width:1.5px,rx:10,ry:10,color:#E6EDF3;
+classDef ui fill:#0F1A2B,stroke:#58A6FF,stroke-width:1.2px,rx:10,ry:10,color:#E6EDF3;
+classDef engine fill:#1C1A14,stroke:#FFB86C,stroke-width:1.2px,rx:10,ry:10,color:#E6EDF3;
+classDef doc fill:#112016,stroke:#7EE787,stroke-width:1.2px,rx:10,ry:10,color:#E6EDF3;
+classDef data fill:#121A10,stroke:#C5E478,stroke-width:1.2px,rx:10,ry:10,color:#E6EDF3;
+
+%% =======================
+%% Inspect Portal
+%% =======================
+subgraph InspectPortal["Inspect"]
+  direction TB
+  InspectUI["🔍 Inspect UI"]
+  KGAPI["🧭 KG API"]
+  KG["🕸️ Enterprise KG"]
+  InspectUI --> KGAPI --> KG
+end
+class InspectPortal portal
+class InspectUI ui
+class KGAPI engine
+class KG data
+
+%% =======================
+%% Code Generation Portal
+%% =======================
+subgraph CodeGenPortal["Code Generation"]
+  direction TB
+  DevUI["🖥️ VS Code (UI)"]
+  Orchestrator["🧠 Orchestrator"]
+  AgentsCapsule["🛠️ Micro-Agents:\nCode • Analyze • Tests • DataGen • Run • Validate • Env • Security"]
+  DevTools["⚙️ Dev Tools"]
+
+  DevUI --> Orchestrator
+  Orchestrator --> AgentsCapsule
+  Orchestrator --> DevTools
+end
+class CodeGenPortal portal
+class DevUI ui
+class Orchestrator engine
+class AgentsCapsule engine
+class DevTools engine
+
+%% =======================
+%% Plan Portal
+%% =======================
+subgraph PlanPortal["Plan"]
+  direction TB
+  Req["🗂️ Requirements\n(Epics • Stories)"]
+  Arch["📦 Architecture\n(Containers • Components)"]
+  Tests["🧪 Test Plans\n(Suites • Cases)"]
+  Req --> Arch --> Tests
+end
+class PlanPortal portal
+class Req doc
+class Arch doc
+class Tests doc
+
+%% =======================
+%% Cross-Portal Story (minimal arrows)
+%% =======================
+linkStyle default stroke:#6E7681,stroke-width:1.2px;
+
+KGAPI -- "impact insights" --> Req
+Req -- "requirements" --> Orchestrator
+Arch -- "target arch" --> Orchestrator
+Orchestrator -- "artifacts & PRs" --> Arch
+Orchestrator -- "test specs/results" --> Tests
+Orchestrator -- "context queries" --> KGAPI
 ```
 
-```plantuml {scale: 0.7}
-@startuml
 
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
+---
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
+# Market Opportunity
 
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
+<div class="kavia-split">
+  <div class="left">
+    <div class="feature-card vbar">
+      <div class="eyebrow">TAM</div>
+      <h3 class="feature-title">Software Dev Tools/Platforms</h3>
+      <p class="muted">$60B+ globally (est.)</p>
+    </div>
+    <div class="feature-card vbar">
+      <div class="eyebrow">SAM</div>
+      <h3 class="feature-title">AI-assisted Dev & DevEx</h3>
+      <p class="muted">Rapidly expanding with AI adoption</p>
+    </div>
+    <div class="feature-card vbar">
+      <div class="eyebrow">Industries</div>
+      <ul class="points-clean">
+        <li>HealthTech, Automotive, SaaS, FinTech, </li>
+        <li>Platform, Product Engineering</li>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <div class="glass-frame tall">
+      <div class="glow-badge pill">Market</div>
+      <div class="frame-placeholder">Market size chart placeholder</div>
+    </div>
+  </div>
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
 ---
 
-# Draggable Elements
+# Competitive Landscape
 
-Double-click on the draggable elements to edit their positions.
+<div class="glass-frame wide mt-2">
+  <div class="glow-badge pill">Matrix</div>
+  <div class="frame-placeholder">Competitive matrix placeholder</div>
+</div>
 
-<br>
+---
 
-###### Directive Usage
+# Ideal Customer Profile (ICP)
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+<div class="avatars-grid mt-2">
+  <div class="avatar-card">
+    <div class="avatar-circle">Org</div>
+    <div class="avatar-body">
+      <div class="eyebrow">Organizations</div>
+      <h3 class="feature-title">Mid-market & Enterprise</h3>
+      <p class="muted">50–1000+ engineers</p>
+    </div>
   </div>
-</v-drag>
 
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+  <div class="avatar-card">
+    <div class="avatar-circle">Team</div>
+    <div class="avatar-body">
+      <div class="eyebrow">Team Traits</div>
+      <ul class="points-clean">
+        <li>Multiple services, complex CI/CD, strong governance</li>
+        <li>Refactoring, migration, maintenance backlogs</li>
+        <li>High cost and delivery time pressure</li>
+      </ul>
+    </div>
+  </div>
 
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-src: ./pages/imported-slides.md
-hide: false
----
-
----
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+  <div class="avatar-card">
+    <div class="avatar-circle">Ind</div>
+    <div class="avatar-body">
+      <div class="eyebrow">Industries</div>
+      <ul class="points-clean">
+        <li>SaaS, FinTech, HealthTech</li>
+        <li>E-commerce, Platform</li>
+        <li>Product Engineering teams</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ---
-layout: center
-class: text-center
+
+# Use Cases
+
+<div class="masonry three mt-2">
+  <div class="feature-card vbar"><h3 class="feature-title">New Feature Development</h3><p class="muted">On large codebases with tests and docs</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Refactoring at Scale</h3><p class="muted">Safely modernize legacy modules</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">API-first Development</h3><p class="muted">Auto-generate OpenAPI and clients</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Test Coverage</h3><p class="muted">Expand tests and remediate flaky cases</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Security Hardening</h3><p class="muted">Secret scans, upgrades, policy checks</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Migrations</h3><p class="muted">New frameworks and languages</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Legacy Maintenance</h3><p class="muted">Ongoing upkeep and refactoring</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Documentation</h3><p class="muted">Architecture, API, runbooks</p></div>
+  <div class="feature-card vbar"><h3 class="feature-title">Engineer Onboarding</h3><p class="muted">Quick-start for new engineersx</p></div>
+</div>
+
 ---
 
-# Learn More
+# Business Model
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+<div class="pricing-split mt-2">
+  <div class="pricing-col">
+    <div class="feature-card vbar">
+      <div class="eyebrow">Pricing</div>
+      <ul class="points-clean">
+        <li>Subscription tiers by seats and usage</li>
+        <li>Enterprise plan with SSO, VPC/on‑prem, SLAs</li>
+      </ul>
+    </div>
+    <div class="glass-frame short">
+      <div class="glow-badge pill">Pricing</div>
+      <div class="frame-placeholder">Pricing table placeholder</div>
+    </div>
+  </div>
+  <div class="pricing-col">
+    <div class="feature-card vbar">
+      <div class="eyebrow">Expansion</div>
+      <ul class="points-clean">
+        <li>Add‑on modules: compliance packs, SOC2 helpers, custom agents</li>
+        <li>Marketplace for community/partner templates</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<PoweredBySlidev mt-10 />
+---
+
+# Go-To-Market Strategy
+
+<div class="timeline">
+  <div class="time-node">
+    <div class="time-dot"></div>
+    <div class="time-card">
+      <div class="eyebrow">Bottom-up</div>
+      <ul class="points-clean">
+        <li>Free trials, self‑serve onboarding</li>
+        <li>Individuals & small teams</li>
+      </ul>
+    </div>
+  </div>
+  <div class="time-node">
+    <div class="time-dot"></div>
+    <div class="time-card">
+      <div class="eyebrow">Top-down</div>
+      <ul class="points-clean">
+        <li>Enterprise features, security reviews, on-prem options</li>
+        <li>Mid‑market & enterprise orgs</li>
+        <li>Onboarding, FDE, Customer success playbook</li>
+      </ul>
+    </div>
+  </div>
+  <div class="time-node">
+    <div class="time-dot"></div>
+    <div class="time-card">
+      <div class="eyebrow">Channels</div>
+      <ul class="points-clean">
+        <li>Developer advocacy, content, workshops, universities</li>
+        <li>Partnerships: ISVs, SIs, Cloud Providers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
+
+# Traction and Metrics
+
+<div class="stats-grid mt-2">
+  <div class="stat-card">
+    <div class="stat-number">1000+</div>
+    <div class="stat-label">Users</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">200</div>
+    <div class="stat-label">Engineers (Tata)</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">15</div>
+    <div class="stat-label">Enterprise Trials</div>
+  </div>
+</div>
+
+<div class="glass-frame mt-4 short">
+  <div class="glow-badge pill">KPIs</div>
+  <div class="frame-placeholder">KPI chart placeholder</div>
+</div>
+
+---
+
+# Roadmap
+
+<div class="timeline horiz mt-2">
+  <div class="time-node">
+    <div class="time-dot"></div>
+    <div class="time-card">
+      <div class="eyebrow">0–6 months</div>
+      <ul class="points-clean">
+        <li>Deeper CI integrations; broader language/framework coverage</li>
+        <li>Unified Chat across agents</li>
+        <li>VS Code extension</li>
+        <li>Connectors for 50+ enterprise tools</li>
+      </ul>
+    </div>
+  </div>
+  <div class="time-node">
+    <div class="time-dot future"></div>
+    <div class="time-card">
+      <div class="eyebrow">6–12 months</div>
+      <ul class="points-clean">
+        <li>Agent marketplace & partner templates</li>
+        <li>Expanded compliance packs & governance</li>
+      </ul>
+    </div>
+  </div>
+  <div class="time-node">
+    <div class="time-dot future"></div>
+    <div class="time-card">
+      <div class="eyebrow">12+ months</div>
+      <ul class="points-clean">
+        <li>Predictive delivery insights</li>
+        <li>Autonomous refactoring missions with approval gates</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
+
+# Case Study
+
+<div class="two-up mt-2">
+  <div class="feature-card vbar">
+    <div class="eyebrow">Customer</div>
+    <h3 class="feature-title">[Anonymized Mid‑Market SaaS]</h3>
+    <ul class="points-clean">
+      <li>Legacy codebase + 3 new services</li>
+      <li>Estimated 5–9 FTE months</li>
+    </ul>
+  </div>
+  <div class="feature-card glass">
+    <div class="eyebrow">Results</div>
+    <h3 class="feature-title">2 weeks to completion</h3>
+    <p class="muted">From ingestion to PRs and documentation</p>
+  </div>
+</div>
+
+<div class="feature-card vbar mt-2">
+  <div class="eyebrow">Kavia Approach</div>
+  <ul class="points-clean">
+    <li>Automatic ingestion of codebase</li>
+    <li>Deep analysis of requirements</li>
+    <li>End‑to‑end code, tests, and docs generation</li>
+  </ul>
+</div>
+
+---
+
+# Team
+
+<div class="avatars-grid mt-2">
+  <div class="avatar-card">
+    <div class="avatar-img">LI</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Labeeb Ismail</h4>
+      <p class="muted small">Product/Engineering leadership, AI, Enterprise SW Dev</p>
+    </div>
+  </div>
+  <div class="avatar-card">
+    <div class="avatar-img">AG</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Anita Ganti</h4>
+      <p class="muted small">GTM/Executive leadership, Enterprise sales</p>
+    </div>
+  </div>
+  <div class="avatar-card">
+    <div class="avatar-img">RS</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Rich Saffir</h4>
+      <p class="muted small">Ex‑Wurl, ex‑Tower Cloud</p>
+    </div>
+  </div>
+
+  <div class="avatar-card">
+    <div class="avatar-img">JC</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Joe Chow</h4>
+      <p class="muted small">Ex‑Cisco, Ex‑Comscope</p>
+    </div>
+  </div>
+  <div class="avatar-card">
+    <div class="avatar-img">JS</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Joe Stockwell</h4>
+      <p class="muted small">Ex‑Exodus</p>
+    </div>
+  </div>
+  <div class="avatar-card">
+    <div class="avatar-img">SS</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Sri Solar</h4>
+      <p class="muted small">CEO, Kenmore Appliances</p>
+    </div>
+  </div>
+  <div class="avatar-card">
+    <div class="avatar-img">AJ</div>
+    <div class="avatar-body">
+      <h4 class="feature-title">Aljit Joy</h4>
+      <p class="muted small">Ex‑Comcast</p>
+    </div>
+  </div>
+</div>
+
+---
+
+# Financials & Use of Funds
+
+<div class="kavia-split mt-2">
+  <div class="left">
+    <div class="feature-card vbar">
+      <div class="eyebrow">Current</div>
+      <ul class="points-clean">
+        <li>Bootstrapped/pre‑seed: 1M</li>
+        <li>B2C launch and initial customer acquisitions</li>
+        <li>$2.5M SAFE raised/committed</li>
+        <li>~9 months runway</li>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <div class="glass-frame">
+      <div class="glow-badge pill">Use of Funds</div>
+      <div class="frame-placeholder">Use of funds pie chart placeholder</div>
+    </div>
+  </div>
+</div>
+
+---
+
+# Ask & Contact
+
+<div class="cta-band">
+  <div class="cta-copy">
+    <div class="overline">Fundraising</div>
+    <h2 class="text-hero">Seeking additional $2.5M SAFE</h2>
+    <p class="muted">Targets: 60–100 customers; $2.7M ARR by Q1 2026</p>
+    <div class="cta-actions">
+      <button class="btn-primary">Intro Us</button>
+      <a href="mailto:labeeb@kavia.ai" class="btn-secondary">Email: labeeb@kavia.ai</a>
+    </div>
+  </div>
+  <div class="cta-side">
+    <div class="card">
+      <div class="eyebrow">How You Can Help</div>
+      <ul class="points-clean">
+        <li>Intros to design partners & enterprise customers</li>
+        <li>Advisorship in governance/compliance & partnerships</li>
+      </ul>
+      <div class="muted small mt-4">www.kavia.ai</div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-6 subtle">Press S for presenter mode • Press E to open editor • Use toolbar for PDF export</div>
