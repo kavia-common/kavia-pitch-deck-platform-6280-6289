@@ -5,14 +5,14 @@ title: Kavia – Code Generation Platform for Teams
 info: |
   Kavia Investor Deck — 20 slides
   Dark theme aligned to new Kavia ember/orange palette with elevated panels.
-class: text-left
+class: "text-left kavia-canvas"
 mdc: true
 transition: slide-left
 fonts:
-  sans: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial
+  sans: Inter, "Helvetica Neue", Arial, sans-serif
   mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 css: |
-  @import "./theme/kavia.css";
+  @import "./style.css";
 
 ---
 # KAVIA AI 

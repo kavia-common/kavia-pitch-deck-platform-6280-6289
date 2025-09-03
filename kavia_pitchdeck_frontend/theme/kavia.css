@@ -1,43 +1,63 @@
 :root {
-  /* Core Kavia dark palette — updated to ember/orange from assets/kavia_color_palette_design_notes.md */
-  --kavia-bg-canvas: #1F1A1A;       /* warm charcoal canvas */
-  --kavia-bg-elevated: #252021;     /* cards/surfaces */
-  --kavia-bg-elev-1: #252021;
-  --kavia-bg-elev-2: #2B2526;
-  --kavia-bg-elev-3: #342C2D;
-  --kavia-bg-sidebar: #1C1717;
+  /* Extracted tokens (assets/slidev_theme_tokens.md) mapped to theme variables */
 
-  --kavia-text-primary: #F4F4F5;
-  --kavia-text-secondary: #C9C9CF;
-  --kavia-text-muted: #9C9CA3;
-  --kavia-icon-muted: #8B8B92;
+  /* Canvas and neutrals */
+  --kavia-bg-canvas: #111214; /* near-black base from screenshot */
+  --kavia-charcoal-1: #1C1D1F;
+  --kavia-charcoal-2: #242528;
 
-  --kavia-border-subtle: #3A3334;
-  --kavia-border-strong: #4A4143;
+  /* Elevation surfaces (derived) */
+  --kavia-bg-elevated: var(--kavia-charcoal-1);
+  --kavia-bg-elev-1: var(--kavia-charcoal-1);
+  --kavia-bg-elev-2: var(--kavia-charcoal-2);
+  --kavia-bg-elev-3: #2B2C30;
+  --kavia-bg-sidebar: #0F1012;
 
-  /* Primary brand – Orange Ember */
-  --kavia-primary-600: #E06F27;
-  --kavia-primary-500: #F07D31;
-  --kavia-primary-400: #F59652;
+  /* Text */
+  --kavia-text: #FFFFFF;
+  --kavia-text-primary: var(--kavia-text);
+  --kavia-text-secondary: #C9C9CC;
+  --kavia-text-muted: var(--kavia-text-secondary);
+  --kavia-icon-muted: #9DA0A6;
+
+  /* Lines */
+  --kavia-divider: #E6E6EA;
+  --kavia-border-subtle: #2D2F33;
+  --kavia-border-strong: #3A3D42;
+
+  /* Brand accent */
+  --kavia-accent: #F08A3C;      /* warm orange */
+  --kavia-accent-deep: #C7632A; /* deeper orange */
+  --kavia-accent-05: rgba(240,138,60,0.05);
+  --kavia-accent-12: rgba(240,138,60,0.12);
+  --kavia-accent-20: rgba(240,138,60,0.20);
+  --kavia-accent-35: rgba(240,138,60,0.35);
+
+  /* Back-compat primary ramp, mapped to accent */
+  --kavia-primary-600: var(--kavia-accent-deep);
+  --kavia-primary-500: var(--kavia-accent);
+  --kavia-primary-400: #F59E52;
   --kavia-primary-300: #FFB27A;
   --kavia-primary-200: #FFD1AF;
   --kavia-primary-50:  #FFF2E8;
 
-  /* Accent aliases for backwards compatibility */
-  --kavia-accent: var(--kavia-primary-500);
+  /* Alias for older usages */
   --kavia-accent-strong: var(--kavia-primary-600);
 
-  /* Semantic */
-  --kavia-success: #40D79E;
-  --kavia-warning: #FFC75A;
-  --kavia-danger:  #FF6B6B;
-  --kavia-info:    #6EB9FF;
+  /* Slidev variables so built-in components pick the palette automatically */
+  --slidev-theme-primary: var(--kavia-accent);
+  --slidev-primary: var(--kavia-accent);
+  --slidev-font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  --slidev-code-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --slidev-text-color: var(--kavia-text);
+  --slidev-muted: var(--kavia-text-muted);
+  --slidev-background: var(--kavia-bg-canvas);
 
   /* Controls */
-  --kavia-btn-primary-fg: #1C1717;
+  --kavia-btn-primary-fg: #0B0C0E;
   --kavia-btn-primary-bg: var(--kavia-primary-500);
   --kavia-btn-primary-hover: var(--kavia-primary-600);
-  --kavia-btn-primary-press: #C65E1D;
+  --kavia-btn-primary-press: #9F4F22;
   --kavia-btn-ghost-fg: var(--kavia-text-secondary);
   --kavia-btn-ghost-hover-bg: var(--kavia-bg-elev-2);
   --kavia-chip-bg: var(--kavia-bg-elev-2);
@@ -47,75 +67,66 @@
 
   /* Focus and overlays */
   --kavia-focus-ring: var(--kavia-primary-400);
-  --kavia-overlay-ambient: linear-gradient(180deg, rgba(255,138,76,0.22) 0%, rgba(0,0,0,0) 55%);
+  --kavia-overlay-ambient: linear-gradient(180deg, rgba(240,138,60,0.22) 0%, rgba(0,0,0,0) 55%);
 
-  /* Lines (generic fallbacks still supported) */
-  --line-subtle: var(--kavia-border-subtle);
-  --line: var(--kavia-border-subtle);
-  --line-strong: var(--kavia-border-strong);
-
-  /* Deprecated/legacy tokens retained as fallbacks to new ones */
+  /* Fallback aliases */
   --bg-canvas: var(--kavia-bg-canvas);
   --bg-elevated: var(--kavia-bg-elevated);
   --bg-muted: var(--kavia-bg-elev-2);
-
   --text-primary: var(--kavia-text-primary);
   --text-secondary: var(--kavia-text-secondary);
   --text-inverted: #0D0F14;
   --text-link: var(--kavia-primary-300);
 
-  /* Accent family retained for charts and cool highlights if needed */
+  /* Accent family retained for charts */
   --accent-primary: var(--kavia-primary-500);
   --accent-primary-600: var(--kavia-primary-600);
   --accent-primary-400: var(--kavia-primary-400);
   --accent-secondary: #17D1D4;
   --accent-warm: #FF5C8A;
 
-  /* Gradients: ember brand */
+  /* Gradients: extracted warm glows and brand ramp */
   --grad-primary: linear-gradient(135deg, var(--kavia-primary-600) 0%, var(--kavia-primary-400) 50%, var(--kavia-primary-300) 100%);
-  --grad-hero: radial-gradient(1200px 600px at 60% -10%, rgba(240,125,49,0.28) 0%, rgba(245,150,82,0.18) 35%, rgba(31,26,26,0) 70%);
+  --grad-hero: radial-gradient(1200px 600px at 60% -10%, rgba(240,138,60,0.28) 0%, rgba(245,158,82,0.18) 35%, rgba(17,18,20,0) 70%);
 }
 
-/* Base */
+/* Global base and font defaults */
 :root, html, body, .slidev-root, .slidev-page, .slidev-layout, .slidev-layout.current {
   background: var(--kavia-bg-canvas) !important;
   color: var(--kavia-text-primary);
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Layered canvas gradient background from tokens */
+.kavia-canvas,
+body,
+.slidev-page,
+.slidev-layout {
+  color: var(--kavia-text);
+  background-color: var(--kavia-bg-canvas);
+  background-image:
+    radial-gradient(45% 45% at 8% 12%, var(--kavia-accent-35) 0%, rgba(240,138,60,0.18) 25%, rgba(240,138,60,0.10) 45%, rgba(240,138,60,0.00) 70%),
+    radial-gradient(50% 50% at 88% 78%, rgba(199,99,42,0.28) 0%, rgba(199,99,42,0.15) 30%, rgba(199,99,42,0.06) 55%, rgba(199,99,42,0.00) 80%),
+    linear-gradient(110deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.45) 100%);
+  background-blend-mode: screen, screen, normal;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 /* Ensure slide canvas supports vertical scroll when content overflows */
 .slidev-page {
   overflow-y: auto;
-  /* keep horizontal layout intact */
   overflow-x: hidden;
-}
-
-body, .slidev-layout {
-  color: var(--kavia-text-primary);
-}
-
-/* Optional subtle hero glow, add .with-hero-glow to any slide container */
-.with-hero-glow {
-  position: relative;
-  /* allow glow to render outside container; avoid clipping */
-  overflow: visible;
-}
-.with-hero-glow::before {
-  content: "";
-  position: absolute;
-  inset: -20% -10% auto -10%;
-  height: 60%;
-  pointer-events: none;
-  background: var(--grad-hero);
-  filter: blur(2px);
 }
 
 /* Typography */
 h1, h2, h3, h4 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-h1.text-hero { font-weight: 800; letter-spacing: -0.02em; }
+h1, .text-hero { font-weight: 800; letter-spacing: -0.01em; }
 p, li { color: var(--kavia-text-primary); }
 .muted, .subtle { color: var(--kavia-text-secondary); }
 
@@ -132,7 +143,7 @@ a:hover {
 /* Cards and shared tokens */
 .card {
   background: var(--kavia-bg-elevated);
-  border: 1px solid var(--line, var(--kavia-border-subtle));
+  border: 1px solid var(--kavia-border-subtle);
   border-radius: 16px;
   padding: 16px 20px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
@@ -166,7 +177,7 @@ a:hover {
   padding: 12px 20px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(240,125,49,0.28);
+  box-shadow: 0 8px 24px rgba(240,138,60,0.28);
 }
 .button:hover, .kavia-button:hover, .btn-primary:hover {
   background: var(--kavia-btn-primary-hover);
@@ -201,64 +212,30 @@ a:hover {
   outline-offset: 2px;
 }
 
-/* Title slide layout */
-.kavia-title-slide {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  min-height: 100%;
-  padding: 48px;
-  gap: 20px;
-  text-align: center;
+/* Optional subtle hero glow, add .with-hero-glow to any slide container */
+.with-hero-glow {
   position: relative;
-  background: var(--kavia-bg-canvas);
+  overflow: visible;
+}
+.with-hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 60%;
+  pointer-events: none;
+  background: var(--grad-hero);
+  filter: blur(2px);
 }
 
-.kavia-title-slide .logo {
-  height: 56px;
-}
-
-.kavia-title-slide .subtitle {
-  color: var(--kavia-text-secondary);
-}
-
-/* Helpers */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.25rem;
-  align-items: start;
-}
-.placeholder {
-  border: 1px dashed var(--line, var(--kavia-border));
-  border-radius: 12px;
-  padding: 18px;
-  text-align: center;
-  color: var(--kavia-text-secondary);
-  background: color-mix(in oklab, var(--kavia-bg-elevated) 80%, #0000);
-}
-.primary { color: var(--kavia-text-primary); }
-.secondary { color: var(--kavia-text-secondary); }
-
-/* Problem slide layout: grid of cards (no default bullets) */
+/* Problem slide layout and utility components (unchanged structure, reusing new tokens) */
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   margin-top: 8px;
 }
-
-@media (max-width: 1200px) {
-  .problem-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 740px) {
-  .problem-grid {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 1200px) { .problem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 740px) { .problem-grid { grid-template-columns: 1fr; } }
 
 .problem-card {
   position: relative;
@@ -270,8 +247,6 @@ a:hover {
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
   overflow: hidden;
 }
-
-/* subtle accent bar */
 .problem-card::before {
   content: "";
   position: absolute;
@@ -280,14 +255,12 @@ a:hover {
   background: var(--grad-primary);
   opacity: 0.95;
 }
-
 .problem-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--kavia-primary-500) 30%, var(--kavia-border-subtle));
   box-shadow: 0 14px 36px rgba(0,0,0,0.34);
 }
-
-.problem-eyebrow {
+.problem-eyebrow, .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -302,151 +275,7 @@ a:hover {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-
-.problem-title {
-  margin: 0 0 10px 0;
-  font-size: clamp(18px, 1.6vw, 20px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--kavia-text-primary);
-}
-
-/* points rendered as clean list without bullets */
-.problem-points {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.problem-points li {
-  position: relative;
-  padding-left: 18px;
-  color: var(--kavia-text-secondary);
-  line-height: 1.45;
-}
-
-/* custom marker dot with subtle glow matching brand accent */
-.problem-points li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--accent-primary-400, var(--kavia-accent-strong));
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-primary-400, var(--kavia-accent-strong)) 20%, #0000);
-  opacity: 0.95;
-}
-
-/* Code blocks */
-code, pre code, .slidev-code {
-  background: var(--kavia-bg-elevated) !important;
-  color: var(--kavia-text-primary) !important;
-  border: 1px solid var(--kavia-border-subtle);
-  border-radius: 10px;
-}
-
-/* Footer pill on cover */
-.cover-pill {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1.25rem;
-}
-
-/* Section divider style */
-.section-divider {
-  border-top: 1px solid var(--line-subtle);
-  padding-top: 24px;
-  margin-top: 24px;
-}
-
-/* Overline utility */
-.overline {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  font-weight: 700;
-}
-
-/* Generic card grid utilities */
-.card-grid {
-  display: grid;
-  gap: 20px;
-  align-items: start;
-  margin-top: 8px;
-}
-.card-grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
-.card-grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
-.card-grid.four { grid-template-columns: repeat(4, minmax(0,1fr)); }
-
-@media (max-width: 1200px) {
-  .card-grid.four { grid-template-columns: repeat(3, minmax(0,1fr)); }
-}
-@media (max-width: 1024px) {
-  .card-grid.three, .card-grid.four { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 640px) {
-  .card-grid.two, .card-grid.three, .card-grid.four { grid-template-columns: 1fr; }
-}
-
-/* Feature card styling */
-.feature-card, .outcome-card {
-  position: relative;
-  background: var(--kavia-bg-elevated);
-  border: 1px solid var(--line, var(--kavia-border));
-  border-radius: 16px;
-  padding: 18px 20px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-  overflow: hidden;
-}
-.feature-card::before, .outcome-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
-  background: var(--grad-primary);
-  opacity: 0.9;
-}
-.feature-card:hover, .outcome-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--accent-primary) 30%, var(--line, var(--kavia-border)));
-  box-shadow: 0 14px 36px rgba(0,0,0,0.30);
-}
-
-/* Vertical accent bar variant */
-.feature-card.vbar::before,
-.outcome-card.vbar::before { width: 6px; }
-
-/* Glassmorphism variant */
-.feature-card.glass, .outcome-card.glass {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(10px);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  color: var(--kavia-text-secondary);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.feature-title {
+.problem-title, .feature-title {
   margin: 0 0 8px 0;
   font-size: clamp(18px, 1.6vw, 20px);
   font-weight: 700;
@@ -454,21 +283,21 @@ code, pre code, .slidev-code {
   color: var(--kavia-text-primary);
 }
 
-/* Clean bullet list without default markers; used inside cards */
-.points-clean {
+/* points rendered as clean list without bullets */
+.problem-points, .points-clean {
   list-style: none;
   padding-left: 0;
   margin: 0;
   display: grid;
   gap: 8px;
 }
-.points-clean li {
+.problem-points li, .points-clean li {
   position: relative;
   padding-left: 18px;
   color: var(--kavia-text-secondary);
   line-height: 1.45;
 }
-.points-clean li::before {
+.problem-points li::before, .points-clean li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -481,32 +310,25 @@ code, pre code, .slidev-code {
   opacity: 0.95;
 }
 
-/* Outcome specific grid tweaks */
+/* Additional layout utilities preserved */
 .grid-outcomes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 20px;
   margin-top: 10px;
 }
-@media (max-width: 740px) {
-  .grid-outcomes { grid-template-columns: 1fr; }
-}
+@media (max-width: 740px) { .grid-outcomes { grid-template-columns: 1fr; } }
 
-/* Stats band and stat cards */
 .stats-band, .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 16px;
 }
-@media (max-width: 1024px) {
-  .stats-band, .stats-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 640px) {
-  .stats-band, .stats-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 1024px) { .stats-band, .stats-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .stats-band, .stats-grid { grid-template-columns: 1fr; } }
 .stat-card {
   background: var(--kavia-bg-elevated);
-  border: 1px solid var(--line, var(--kavia-border));
+  border: 1px solid var(--kavia-border-subtle);
   border-radius: 16px;
   padding: 18px 20px;
   text-align: center;
@@ -530,7 +352,7 @@ code, pre code, .slidev-code {
   font-size: 12px;
 }
 
-/* Hero split layout */
+/* Hero split and glass frames */
 .hero-split {
   grid-template-columns: 1.1fr 0.9fr;
   display: grid;
@@ -540,7 +362,6 @@ code, pre code, .slidev-code {
 .hero-split .hero-visual { align-self: center; }
 .hero-ctas { display: flex; gap: 12px; margin-top: 12px; }
 
-/* Glass frame component */
 .glass-frame {
   position: relative;
   background: rgba(255,255,255,0.06);
@@ -557,17 +378,10 @@ code, pre code, .slidev-code {
 .glass-frame.tall { min-height: 240px; }
 .glass-frame.short { min-height: 128px; }
 .glass-frame.wide { min-height: 180px; }
-.glow-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-}
-.frame-placeholder {
-  color: var(--kavia-text-secondary);
-  text-align: center;
-}
+.glow-badge { position: absolute; top: 12px; left: 12px; }
+.frame-placeholder { color: var(--kavia-text-secondary); text-align: center; }
 
-/* Split columns layout used on product/market/financials */
+/* Split layouts */
 .split-cols, .kavia-split, .pricing-split {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -576,13 +390,11 @@ code, pre code, .slidev-code {
 .split-cols .left, .split-cols .right,
 .kavia-split .left, .kavia-split .right,
 .pricing-split .pricing-col { display: grid; gap: 16px; }
-
 @media (max-width: 1024px) {
-  .hero-split,
-  .split-cols, .kavia-split, .pricing-split { grid-template-columns: 1fr; }
+  .hero-split, .split-cols, .kavia-split, .pricing-split { grid-template-columns: 1fr; }
 }
 
-/* Avatars grid (team/ICP) */
+/* Avatars grid */
 .avatars-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -596,7 +408,7 @@ code, pre code, .slidev-code {
   gap: 14px;
   align-items: center;
   background: var(--kavia-bg-elevated);
-  border: 1px solid var(--line, var(--kavia-border));
+  border: 1px solid var(--kavia-border-subtle);
   border-radius: 16px;
   padding: 14px 16px;
 }
@@ -610,29 +422,18 @@ code, pre code, .slidev-code {
 }
 .avatar-img { background: color-mix(in oklab, var(--accent-primary-400) 16%, #000); }
 
-/* Masonry-like grid (simple responsive) */
-.masonry {
-  display: grid;
-  gap: 16px;
-}
+/* Masonry */
+.masonry { display: grid; gap: 16px; }
 .masonry.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
 @media (max-width: 1024px) { .masonry.three { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px) { .masonry.three { grid-template-columns: 1fr; } }
 
-/* Two-up helper */
-.two-up {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+/* Two-up */
+.two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 1024px) { .two-up { grid-template-columns: 1fr; } }
 
-/* Timeline (vertical and horizontal) */
-.timeline {
-  position: relative;
-  display: grid;
-  gap: 18px;
-}
+/* Timeline */
+.timeline { position: relative; display: grid; gap: 18px; }
 .timeline::before {
   content: "";
   position: absolute;
@@ -643,12 +444,7 @@ code, pre code, .slidev-code {
   background: color-mix(in oklab, var(--kavia-primary-400) 40%, #000);
   opacity: 0.6;
 }
-.timeline .time-node {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 12px;
-  align-items: flex-start;
-}
+.timeline .time-node { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: flex-start; }
 .time-dot {
   width: 14px; height: 14px; border-radius: 9999px;
   background: var(--kavia-primary-400);
@@ -661,21 +457,15 @@ code, pre code, .slidev-code {
 }
 .time-card {
   background: var(--kavia-bg-elevated);
-  border: 1px solid var(--line, var(--kavia-border));
+  border: 1px solid var(--kavia-border-subtle);
   border-radius: 14px;
   padding: 14px 16px;
 }
 
 /* Horizontal timeline */
-.timeline.horiz {
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  align-items: stretch;
-}
+.timeline.horiz { grid-auto-flow: column; grid-auto-columns: 1fr; align-items: stretch; }
 .timeline.horiz::before { display: none; }
-.timeline.horiz .time-node {
-  grid-template-columns: 1fr;
-}
+.timeline.horiz .time-node { grid-template-columns: 1fr; }
 .timeline.horiz .time-card { height: 100%; }
 
 /* CTA band */
@@ -684,11 +474,18 @@ code, pre code, .slidev-code {
   grid-template-columns: 1.2fr 0.8fr;
   gap: 16px;
   align-items: center;
-  background: linear-gradient(180deg, rgba(240,125,49,0.10), rgba(245,150,82,0.08));
+  background: linear-gradient(180deg, rgba(240,138,60,0.10), rgba(245,150,82,0.08));
   border: 1px solid var(--kavia-border-subtle);
   border-radius: 16px;
   padding: 24px;
 }
 .cta-actions { display: flex; gap: 12px; margin-top: 12px; }
 .cta-side .card { height: 100%; }
-@media (max-width: 1024px) { .cta-band { grid-template-columns: 1fr; } }
+
+/* Code blocks */
+code, pre code, .slidev-code {
+  background: var(--kavia-bg-elevated) !important;
+  color: var(--kavia-text-primary) !important;
+  border: 1px solid var(--kavia-border-subtle);
+  border-radius: 10px;
+}

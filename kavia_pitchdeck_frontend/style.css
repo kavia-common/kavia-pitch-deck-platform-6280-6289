@@ -1,2 +1,3 @@
 /* style.css */
+/* Slidev requires an intermediate import file. Keep all theme-level imports here. */
 @import "./theme/kavia.css";
