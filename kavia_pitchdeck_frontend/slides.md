@@ -68,51 +68,54 @@ css: |
 
 ---
 
+layout: cover
+---
 # Our Solution
+<template>
+  <section class="solution">
+    <header class="solution__header">
+      <h2>Our Solution</h2>
+      <p class="solution__subhead">
+        Kavia: a multi-agent orchestration platform for E2E Software Development with a Custom Knowledge Graph.
+      </p>
+    </header>
 
-<section class="solution">
-  <header class="solution__header">
-    <h2>Our Solution</h2>
-    <p class="solution__subhead">
-      Kavia: a multi-agent orchestration platform for E2E Software Development with a Custom Knowledge Graph.
-    </p>
-  </header>
-
-  <div class="kpi-grid">
-    <article class="kpi-card">
-      <div class="kpi-value">3–5x</div>
-      <div class="kpi-label">FASTER DELIVERY</div>
-    </article>
-    <article class="kpi-card">
-      <div class="kpi-value">1/3</div>
-      <div class="kpi-label">RESOURCES</div>
-    </article>
-    <article class="kpi-card">
-      <div class="kpi-value">100s</div>
-      <div class="kpi-label">ENGINEERS SUPPORTED</div>
-    </article>
-  </div>
-
-  <div class="card-grid three mt-1">
-    <div class="feature-card vbar">
-      <span class="badge">AGENTS</span>
-      <h3 class="feature-title">Specialized micro-agents</h3>
-      <p class="muted">Planning, coding, testing, docs, bug fixing, code-scanning, deployment, etc.</p>
+    <div class="kpi-grid">
+      <article class="kpi-card">
+        <div class="kpi-value">3–5x</div>
+        <div class="kpi-label">FASTER DELIVERY</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-value">1/3</div>
+        <div class="kpi-label">RESOURCES</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-value">100s</div>
+        <div class="kpi-label">ENGINEERS SUPPORTED</div>
+      </article>
     </div>
 
-    <div class="feature-card vbar">
-      <span class="badge">WORKFLOW</span>
-      <h3 class="feature-title">Enterprise-integrated</h3>
-      <p class="muted">CI-aware, repository-native, aligned to enterprise processes/tools</p>
-    </div>
+    <div class="card-grid three mt-1">
+      <div class="feature-card vbar">
+        <span class="badge">AGENTS</span>
+        <h3 class="feature-title">Specialized micro-agents</h3>
+        <p class="muted">Planning, coding, testing, docs, bug fixing, code-scanning, deployment, etc.</p>
+      </div>
 
-    <div class="feature-card vbar">
-      <span class="badge">KNOWLEDGE GRAPH</span>
-      <h3 class="feature-title">Unified enterprise context</h3>
-      <p class="muted">Custom Knowledge Graph powering all agents for deep understanding</p>
+      <div class="feature-card vbar">
+        <span class="badge">WORKFLOW</span>
+        <h3 class="feature-title">Enterprise-integrated</h3>
+        <p class="muted">CI-aware, repository-native, aligned to enterprise processes/tools</p>
+      </div>
+
+      <div class="feature-card vbar">
+        <span class="badge">KNOWLEDGE GRAPH</span>
+        <h3 class="feature-title">Unified enterprise context</h3>
+        <p class="muted">Custom Knowledge Graph powering all agents for deep understanding</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</template>
 
 
 ---
