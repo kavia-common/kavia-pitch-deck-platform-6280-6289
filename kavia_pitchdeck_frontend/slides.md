@@ -70,43 +70,49 @@ css: |
 
 # Our Solution
 
-Kavia: a multi-agent orchestration platform for E2E Software Development with a Custom Knowledge Graph.
+<section class="solution">
+  <header class="solution__header">
+    <h2>Our Solution</h2>
+    <p class="solution__subhead">
+      Kavia: a multi-agent orchestration platform for E2E Software Development with a Custom Knowledge Graph.
+    </p>
+  </header>
 
-<div class="stats-band mt-1">
-  <div class="stat-card">
-    <div class="stat-number">3-5x</div>
-    <div class="stat-label">Faster Delivery</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">1/3</div>
-    <div class="stat-label">Resources</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">100s</div>
-    <div class="stat-label">Engineers Supported</div>
-  </div>
-</div>
-
-<div class="card-grid three mt-1">
-  <div class="feature-card vbar">
-    <div class="eyebrow">Agents</div>
-    <h3 class="feature-title">Specialized micro-agents</h3>
-    <p class="muted">Planning, coding, testing, docs, bug fixing, code-scanning, deployment, etc.</p>
-  </div>
-
-  <div class="feature-card vbar">
-    <div class="eyebrow">Workflow</div>
-    <h3 class="feature-title">Enterprise-integrated</h3>
-    <p class="muted">CI-aware, repository-native, aligned to enterprise processes/tools</p>
+  <div class="kpi-grid">
+    <article class="kpi-card">
+      <div class="kpi-value">3–5x</div>
+      <div class="kpi-label">FASTER DELIVERY</div>
+    </article>
+    <article class="kpi-card">
+      <div class="kpi-value">1/3</div>
+      <div class="kpi-label">RESOURCES</div>
+    </article>
+    <article class="kpi-card">
+      <div class="kpi-value">100s</div>
+      <div class="kpi-label">ENGINEERS SUPPORTED</div>
+    </article>
   </div>
 
-  <div class="feature-card vbar">
-    <div class="eyebrow">Knowledge Graph</div>
-    <h3 class="feature-title">Unified enterprise context</h3>
-    <p class="muted">Custom Knowledge Graph powering all agents for deep understanding</p>
-  </div>
+  <div class="card-grid three mt-1">
+    <div class="feature-card vbar">
+      <span class="badge">AGENTS</span>
+      <h3 class="feature-title">Specialized micro-agents</h3>
+      <p class="muted">Planning, coding, testing, docs, bug fixing, code-scanning, deployment, etc.</p>
+    </div>
 
-</div>
+    <div class="feature-card vbar">
+      <span class="badge">WORKFLOW</span>
+      <h3 class="feature-title">Enterprise-integrated</h3>
+      <p class="muted">CI-aware, repository-native, aligned to enterprise processes/tools</p>
+    </div>
+
+    <div class="feature-card vbar">
+      <span class="badge">KNOWLEDGE GRAPH</span>
+      <h3 class="feature-title">Unified enterprise context</h3>
+      <p class="muted">Custom Knowledge Graph powering all agents for deep understanding</p>
+    </div>
+  </div>
+</section>
 
 
 ---
@@ -301,7 +307,7 @@ Orchestrator -- "context queries" --> KGAPI
   <div class="avatar-card">
     <div class="avatar-circle">Org</div>
     <div class="avatar-body">
-      <div class="eyebrow">Organizations</div>
+      <span class="badge">ORGANIZATIONS</span>
       <h3 class="feature-title">Mid-market & Enterprise</h3>
       <p class="muted">50–1000+ engineers</p>
     </div>
@@ -310,7 +316,7 @@ Orchestrator -- "context queries" --> KGAPI
   <div class="avatar-card">
     <div class="avatar-circle">Team</div>
     <div class="avatar-body">
-      <div class="eyebrow">Team Traits</div>
+      <span class="badge">TEAM TRAITS</span>
       <ul class="points-clean">
         <li>Multiple services, complex CI/CD, strong governance</li>
         <li>Refactoring, migration, maintenance backlogs</li>
@@ -322,7 +328,7 @@ Orchestrator -- "context queries" --> KGAPI
   <div class="avatar-card">
     <div class="avatar-circle">Ind</div>
     <div class="avatar-body">
-      <div class="eyebrow">Industries</div>
+      <span class="badge">INDUSTRIES</span>
       <ul class="points-clean">
         <li>SaaS, FinTech, HealthTech</li>
         <li>E-commerce, Platform</li>
@@ -355,7 +361,7 @@ Orchestrator -- "context queries" --> KGAPI
 <div class="pricing-split mt-2">
   <div class="pricing-col">
     <div class="feature-card vbar">
-      <div class="eyebrow">Pricing</div>
+      <span class="badge">PRICING</span>
       <ul class="points-clean">
         <li>Subscription tiers by seats and usage</li>
         <li>Enterprise plan with SSO, VPC/on‑prem, SLAs</li>
@@ -368,7 +374,7 @@ Orchestrator -- "context queries" --> KGAPI
   </div>
   <div class="pricing-col">
     <div class="feature-card vbar">
-      <div class="eyebrow">Expansion</div>
+      <span class="badge">EXPANSION</span>
       <ul class="points-clean">
         <li>Add‑on modules: compliance packs, SOC2 helpers, custom agents</li>
         <li>Marketplace for community/partner templates</li>
@@ -420,19 +426,19 @@ Orchestrator -- "context queries" --> KGAPI
 # Traction and Metrics
 
 <div class="stats-grid mt-2">
-  <div class="stat-card">
-    <div class="stat-number">1000+</div>
-    <div class="stat-label">Users</div>
+  <div class="kpi-card stat-card">
+    <div class="kpi-value stat-number">1000+</div>
+    <div class="kpi-label stat-label">USERS</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-number">200</div>
-    <div class="stat-label">Engineers (Tata)</div>
+  <div class="kpi-card stat-card">
+    <div class="kpi-value stat-number">200</div>
+    <div class="kpi-label stat-label">ENGINEERS (TATA)</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-number">15</div>
-    <div class="stat-label">Enterprise Trials</div>
+  <div class="kpi-card stat-card">
+    <div class="kpi-value stat-number">15</div>
+    <div class="kpi-label stat-label">ENTERPRISE TRIALS</div>
   </div>
 </div>
 
@@ -486,22 +492,22 @@ Orchestrator -- "context queries" --> KGAPI
 
 <div class="two-up mt-2">
   <div class="feature-card vbar">
-    <div class="eyebrow">Customer</div>
+    <span class="badge">CUSTOMER</span>
     <h3 class="feature-title">[Anonymized Mid‑Market SaaS]</h3>
     <ul class="points-clean">
       <li>Legacy codebase + 3 new services</li>
       <li>Estimated 5–9 FTE months</li>
     </ul>
   </div>
-  <div class="feature-card glass">
-    <div class="eyebrow">Results</div>
+  <div class="feature-card vbar">
+    <span class="badge">RESULTS</span>
     <h3 class="feature-title">2 weeks to completion</h3>
     <p class="muted">From ingestion to PRs and documentation</p>
   </div>
 </div>
 
 <div class="feature-card vbar mt-2">
-  <div class="eyebrow">Kavia Approach</div>
+  <span class="badge">KAVIA APPROACH</span>
   <ul class="points-clean">
     <li>Automatic ingestion of codebase</li>
     <li>Deep analysis of requirements</li>
@@ -605,8 +611,8 @@ Orchestrator -- "context queries" --> KGAPI
     </div>
   </div>
   <div class="cta-side">
-    <div class="card">
-      <div class="eyebrow">How You Can Help</div>
+    <div class="feature-card vbar">
+      <span class="badge">HOW YOU CAN HELP</span>
       <ul class="points-clean">
         <li>Intros to design partners & enterprise customers</li>
         <li>Advisorship in governance/compliance & partnerships</li>

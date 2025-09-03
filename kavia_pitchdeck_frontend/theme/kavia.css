@@ -141,12 +141,43 @@ a:hover {
 }
 
 /* Cards and shared tokens */
-.card {
+.card,
+.problem-card,
+.feature-card,
+.stat-card,
+.avatar-card,
+.time-card,
+.glass-frame,
+.cta-band {
   background: var(--kavia-bg-elevated);
   border: 1px solid var(--kavia-border-subtle);
   border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* Unify internal padding consistently across blocks */
+.card,
+.feature-card,
+.stat-card,
+.avatar-card,
+.time-card { padding: 16px 20px; }
+
+/* Hover / focus elevation for interactive-feel blocks */
+.card:hover,
+.feature-card:hover,
+.stat-card:hover,
+.problem-card:hover {
+  background: color-mix(in oklab, var(--kavia-bg-elevated) 92%, #fff);
+  border-color: color-mix(in oklab, var(--kavia-border-subtle) 70%, var(--kavia-primary-500));
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+}
+.card:focus-within,
+.feature-card:focus-within,
+.stat-card:focus-within,
+.problem-card:focus-within {
+  outline: 2px solid color-mix(in oklab, var(--kavia-primary-500) 55%, #fff0);
+  outline-offset: 2px;
+  border-color: color-mix(in oklab, var(--kavia-primary-500) 40%, var(--kavia-border-subtle));
 }
 
 /* Pills / badges */
@@ -239,10 +270,10 @@ a:hover {
 
 .problem-card {
   position: relative;
-  background: var(--kavia-bg-elevated);
-  border: 1px solid var(--kavia-border-subtle);
+  background: #14171A;
+  border: 1px solid #2A2E33;
   border-radius: 16px;
-  padding: 20px 22px 18px 22px;
+  padding: 18px 20px;
   box-shadow: 0 10px 28px rgba(0,0,0,0.28);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
   overflow: hidden;
@@ -250,37 +281,57 @@ a:hover {
 .problem-card::before {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
+  top: 0; left: 0; bottom: 0;
   width: 4px;
   background: var(--grad-primary);
   opacity: 0.95;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 .problem-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--kavia-primary-500) 30%, var(--kavia-border-subtle));
   box-shadow: 0 14px 36px rgba(0,0,0,0.34);
 }
-.problem-eyebrow, .eyebrow {
+.problem-eyebrow, .eyebrow, .badge, .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  height: 22px;
   padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 9999px;
+  background: #171A1D;
+  border: 1px solid #2A2E33;
   color: var(--kavia-text-secondary);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 .problem-title, .feature-title {
-  margin: 0 0 8px 0;
-  font-size: clamp(18px, 1.6vw, 20px);
-  font-weight: 700;
+  margin: 0 0 6px 0;
+  font-size: clamp(16px, 1.4vw, 18px);
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--kavia-text-primary);
+}
+
+/* Feature blocks with badges above title, consistent gaps */
+.feature-card {
+  background: #14171A;
+  border: 1px solid #2A2E33;
+  border-radius: 16px;
+}
+.feature-card .eyebrow,
+.feature-card .badge { margin-bottom: 8px; }
+
+.feature-card.vbar { display: grid; gap: 6px; }
+.feature-card p,
+.feature-card .muted {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--kavia-text-secondary);
 }
 
 /* points rendered as clean list without bullets */
@@ -319,37 +370,73 @@ a:hover {
 }
 @media (max-width: 740px) { .grid-outcomes { grid-template-columns: 1fr; } }
 
-.stats-band, .stats-grid {
+/* Solution section helpers per design notes */
+.solution {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 32px 24px 40px;
+}
+.solution__header h2 {
+  font-size: clamp(28px, 3.2vw, 32px);
+  font-weight: 700;
+  color: #F4F5F6;
+  margin-bottom: 8px;
+}
+.solution__subhead {
+  max-width: 85ch;
+  font-size: 14px;
+  font-weight: 500;
+  color: #B6BCC2;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+@media (min-width: 1200px) {
+  .solution { padding-left: 48px; padding-right: 48px; }
+}
+
+/* KPI grid styled to match design notes */
+.kpi-grid,
+.stats-band,
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 16px;
 }
-@media (max-width: 1024px) { .stats-band, .stats-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .stats-band, .stats-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .kpi-grid, .stats-band, .stats-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px) { .kpi-grid, .stats-band, .stats-grid { grid-template-columns: 1fr; } }
+
+.kpi-card,
 .stat-card {
-  background: var(--kavia-bg-elevated);
-  border: 1px solid var(--kavia-border-subtle);
+  background: #14171A; /* card-bg from notes */
+  border: 1px solid #2A2E33; /* card-border */
   border-radius: 16px;
-  padding: 18px 20px;
-  text-align: center;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+  padding: 16px 20px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.04),
+    0 6px 14px rgba(0,0,0,0.35);
+  display: grid;
+  align-content: center;
+  text-align: left; /* left aligned content per notes */
+  min-height: 96px;
 }
+
+.kpi-value,
 .stat-number {
-  font-size: clamp(28px, 4.6vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: var(--grad-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: clamp(28px, 3.6vw, 32px);
+  font-weight: 700;
+  color: #F18A3B; /* accent-orange */
+  letter-spacing: 0;
+  line-height: 1.1;
 }
+
+.kpi-label,
 .stat-label {
   margin-top: 6px;
-  color: var(--kavia-text-secondary);
-  font-weight: 700;
+  color: #9AA2A9; /* muted text */
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-size: 11px;
 }
 
 /* Hero split and glass frames */
@@ -364,10 +451,10 @@ a:hover {
 
 .glass-frame {
   position: relative;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--kavia-border-subtle);
+  background: rgba(23,26,29,0.6);
+  border: 1px solid #2A2E33;
   border-radius: 16px;
-  padding: 14px;
+  padding: 16px;
   backdrop-filter: blur(10px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.35);
   min-height: 160px;
@@ -379,7 +466,7 @@ a:hover {
 .glass-frame.short { min-height: 128px; }
 .glass-frame.wide { min-height: 180px; }
 .glow-badge { position: absolute; top: 12px; left: 12px; }
-.frame-placeholder { color: var(--kavia-text-secondary); text-align: center; }
+.frame-placeholder { color: var(--kavia-text-secondary); text-align: center; font-size: 14px; }
 
 /* Split layouts */
 .split-cols, .kavia-split, .pricing-split {
@@ -475,9 +562,10 @@ a:hover {
   gap: 16px;
   align-items: center;
   background: linear-gradient(180deg, rgba(240,138,60,0.10), rgba(245,150,82,0.08));
-  border: 1px solid var(--kavia-border-subtle);
+  border: 1px solid #2A2E33;
   border-radius: 16px;
   padding: 24px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
 .cta-actions { display: flex; gap: 12px; margin-top: 12px; }
 .cta-side .card { height: 100%; }
