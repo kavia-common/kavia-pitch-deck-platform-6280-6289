@@ -1,0 +1,52 @@
+/*
+Custom theme variables and utilities for Kavia Pitch Deck.
+
+This file centralizes brand tokens and lightweight utility classes. It is imported
+through style.css to satisfy Slidev's two-step import requirement.
+
+Keep this file CSS-only (no PostCSS nesting assumptions) for portability.
+*/
+
+:root {
+  /* Brand colors (light theme defaults) */
+  --brand-primary: #1e293b;   /* slate-800 */
+  --brand-secondary: #64748b; /* slate-500 */
+  --brand-accent: #f59e42;    /* orange-400 */
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-weight: 700;
+  --body-weight: 400;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+/* Apply brand tokens to slide content */
+.slidev-layout {
+  font-family: var(--font-sans);
+  color: var(--brand-primary);
+}
+
+/* Accent utility */
+.accent {
+  color: var(--brand-accent);
+}
+
+/* Example heading style override */
+h1, h2 {
+  font-weight: var(--heading-weight);
+}
+
+/* Example callout box class used by Note.vue */
+.callout {
+  border-left: 4px solid var(--brand-accent);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(245, 158, 66, 0.08);
+  margin: var(--space-4) 0;
+}

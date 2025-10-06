@@ -1,0 +1,28 @@
+{
+  "//": "Slidev project package manifest. Includes scripts to develop, build, and export the presentation. Dependencies chosen to match Slidev core.",
+  "name": "kavia-pitchdeck-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kavia Pitch Deck frontend powered by Slidev. This package.json is annotated to clarify key scripts and dependencies.",
+  "scripts": {
+    "//dev": "Start Slidev in dev server mode with hot reload.",
+    "dev": "slidev",
+    "//build": "Build the presentation as a static site using Vite.",
+    "build": "slidev build",
+    "//export": "Export slides to PDF (requires Playwright for Chromium).",
+    "export": "slidev export --output dist/export.pdf",
+    "//format": "Optional: format markdown and config files (if prettier installed).",
+    "format": "prettier -w ."
+  },
+  "dependencies": {
+    "//": "slidev brings in Vite and Vue under the hood. @slidev/theme-default provides base theme.",
+    "@slidev/cli": "^0.47.1",
+    "@slidev/theme-default": "^0.22.1",
+    "vue": "^3.5.11"
+  },
+  "devDependencies": {
+    "//": "TypeScript is optional but useful for Vite config and component typing.",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

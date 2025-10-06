@@ -1,0 +1,16 @@
+/* 
+Root stylesheet for Slidev.
+IMPORTANT: As per project guidance, Slidev frontmatter CANNOT import theme files directly.
+We must import theme files via this intermediate style.css.
+
+Import chain:
+frontmatter (slides.md) → style.css → theme/custom.css
+*/
+
+@import "./theme/custom.css";
+
+/* 
+Add global overrides here if needed. Keep changes scoped and documented.
+Example:
+:root { --brand-primary: #1e293b; }
+*/
